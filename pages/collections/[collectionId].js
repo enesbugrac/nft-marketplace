@@ -175,23 +175,14 @@ const Collection = () => {
             </div>
             <div className={style.collectionStat}>
               <div className={style.statValue}>
-                <img
-                  src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
-                  alt="eth"
-                  className={style.ethLogo}
-                />
                 {collection?.floorPrice}
+                ETH
               </div>
               <div className={style.statName}>floor price</div>
             </div>
             <div className={style.collectionStat}>
               <div className={style.statValue}>
-                <img
-                  src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg"
-                  alt="eth"
-                  className={style.ethLogo}
-                />
-                {collection?.volumeTraded}.5K
+                {collection?.volumeTraded}.5K ETH
               </div>
               <div className={style.statName}>volume traded</div>
             </div>

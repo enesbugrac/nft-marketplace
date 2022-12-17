@@ -19,56 +19,45 @@ const style = {
   likeIcon: `text-xl mr-2`,
 }
 
-const NFTCard = ({ nftItem, title, listings }) => {
+const CollectionCard = ({ collection, title, listings }) => {
   const [isListed, setIsListed] = useState(false)
-  const [price, setPrice] = useState(0)
-
-  useEffect(() => {
-    const listing = listings.find((listing) => listing.asset.id === nftItem.id)
-    if (Boolean(listing)) {
-      setIsListed(true)
-      setPrice(listing.buyoutCurrencyValuePerToken.displayValue)
-    }
-  }, [listings, nftItem])
-  console.log(price)
+  console.log(collection)
   return (
     <div
       className={style.wrapper}
       onClick={() => {
         Router.push({
-          pathname: `/nfts/${nftItem.id}`,
-          query: { isListed: isListed },
+          pathname: `/collections/0x79170bCcB02F614Bc1a6BaBaAA97eC8b73a74816`,
         })
       }}
     >
       <div className={style.imgContainer}>
-        <img src={nftItem.image} alt={nftItem.name} className={style.nftImg} />
+        <img
+          alt={collection?.title}
+          src={collection?.imageUrl}
+          className={style.nftImg}
+        />
       </div>
       <div className={style.details}>
         <div className={style.info}>
           <div className={style.infoLeft}>
-            <div className={style.collectionName}>{title}</div>
-            <div className={style.assetName}>{nftItem.name}</div>
-          </div>
-          {isListed && (
-            <div className={style.infoRight}>
-              <div className={style.priceTag}>Price</div>
-              <div className={style.priceValue}>
-                {price}
-                ETH
-              </div>
+            <div className={style.collectionName}>{collection?.title}</div>
+            <div className={style.assetName}>
+              Creator: {collection?.creator}
             </div>
-          )}
-        </div>
-        <div className={style.likes}>
-          <span className={style.likeIcon}>
-            <BiHeart />
-          </span>{' '}
-          {nftItem.likes}
+          </div>
+
+          <div className={style.infoRight}>
+            <div className={style.priceTag}>Price</div>
+            <div className={style.priceValue}>
+              {collection?.floorPrice}
+              ETH
+            </div>
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default NFTCard
+export default CollectionCard
