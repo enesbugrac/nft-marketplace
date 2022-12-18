@@ -25,7 +25,7 @@ const Nft = () => {
     if (!provider) return
 
     const sdk = new ThirdwebSDK(provider.getSigner())
-    return sdk.getNFTModule('0x79170bCcB02F614Bc1a6BaBaAA97eC8b73a74816')
+    return sdk.getNFTModule('0xf3c025f17c80382a3a19ea91bdbdba42684f9C5f')
   }, [provider])
 
   // get all NFTs in the collection
