@@ -31,6 +31,10 @@ const NFTCard = ({ nftItem, title, listings }) => {
     }
   }, [listings, nftItem])
   console.log(price)
+
+  
+
+
   return (
     <div
       className={style.wrapper}

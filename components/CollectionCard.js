@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BiHeart } from 'react-icons/bi'
 import Router from 'next/router'
+import { useWeb3} from "@3rdweb/hooks"
 
 const style = {
   wrapper: `bg-[#303339] flex-auto w-[14rem] h-[22rem] my-10 mx-5 rounded-2xl overflow-hidden cursor-pointer`,
@@ -22,14 +23,30 @@ const style = {
 const CollectionCard = ({ collection, title, listings }) => {
   const [isListed, setIsListed] = useState(false)
   console.log(collection)
+
+  const { address} = useWeb3();
+
+  console.log(address);
+
+  function handleCardPressed() {
+    Router.push({
+      pathname: '/webgl',
+      query: { title: collection.title,
+      url:collection?.imgUrl,
+      creator: collection.creator,
+      user:address},
+    })
+   }
+
   return (
     <div
       className={style.wrapper}
-      onClick={() => {
-        Router.push({
-          pathname: `/collections/0x79170bCcB02F614Bc1a6BaBaAA97eC8b73a74816`,
-        })
-      }}
+      // onClick={() => {
+      //   Router.push({
+      //     pathname: `/collections/0x79170bCcB02F614Bc1a6BaBaAA97eC8b73a74816`,
+      //   })
+      // }}
+      onClick={handleCardPressed}
     >
       <div className={style.imgContainer}>
         <img
